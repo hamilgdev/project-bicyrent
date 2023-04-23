@@ -1,0 +1,10 @@
+PUT http://localhost:3001/api/bicycles/1
+Content-Type: application/json
+Authorization: Bearer 090c1acdf9cf75af107b
+
+{
+  "color": "verde",
+  "model": "todo terreno",
+  "latitude": "-34.603722",
+  "length": "-58.381592"
+}

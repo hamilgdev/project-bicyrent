@@ -1,0 +1,2 @@
+POST http://localhost:3001/api/users/authenticate
+Content-Type: application/json
