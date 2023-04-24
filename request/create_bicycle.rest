@@ -12,14 +12,14 @@ Authorization: Bearer 090c1acdf9cf75af107b
 ###
 
 # withouth token
-POST http://localhost:3000/api/bicycles
+POST http://localhost:3001/api/bicycles
 Content-Type: application/json
 
 
 ###
 
 # withouth content
-POST http://localhost:3000/api/bicycles
+POST http://localhost:3001/api/bicycles
 Content-Type: application/json
 
 {

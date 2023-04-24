@@ -1,3 +1,3 @@
-DELETE http://localhost:3000/api/bicycle/32
+DELETE http://localhost:3001/api/bicycle/fd34231
 Content-Type: application/json
 Authorization: Bearer 9eefbecf956ea39e0ad3

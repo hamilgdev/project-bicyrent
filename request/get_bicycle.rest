@@ -1,1 +1,1 @@
-GET http://localhost:3000/api/bicycle/22
+GET http://localhost:3001/api/bicycle/fdfd323
