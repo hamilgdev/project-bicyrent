@@ -17,14 +17,17 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  prepared_statements: false
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: bicyrentApp_development
-
+  database: bicyrent_development
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV.fetch("DB_PASSWORD", ENV["POSTGRES_PASSWORD"]) %>
+  host: <%= ENV.fetch("DB_HOST", "127.0.0.1") %>
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -57,8 +60,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: bicyrentApp_test
-
+  database: bicyrent_test
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV.fetch("DB_PASSWORD", ENV["POSTGRES_PASSWORD"] ) %>
+  host: <%= ENV.fetch("DB_HOST", "127.0.0.1") %>
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -81,6 +86,6 @@ test:
 #
 production:
   <<: *default
-  database: bicyrentApp_production
+  database: bicyrent_production
   username: bicyrentApp
   password: <%= ENV["BICYRENTAPP_DATABASE_PASSWORD"] %>

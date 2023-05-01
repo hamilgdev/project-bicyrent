@@ -37,8 +37,6 @@ export const BicycleForm = ({ onCreateBicycle, onUpdateBicycle, onCancel }) => {
     }
   }
 
-  console.log({ bicycleAction })
-
   return (
     <form onSubmit={handleOnSubmit} className="flex flex-col gap-4 p-8 bg-slate-50 rounded-md shadow-lg">
       <div className="flex flex-col">

@@ -1,0 +1,60 @@
+version: '3'
+services:
+
+  frontend:
+    image: bicy-nextjs-image
+    build:
+      context: ./bicyrent-app
+      dockerfile: ../provision/frontend/Dockerfile
+    ports:
+      - "3000:3000"
+    command: /usr/bin/tini -- yarn dev
+    stdin_open: true
+    tty: true
+    networks:
+      - main
+    env_file:
+      - .env
+    volumes:
+      - ./bicyrent-app:/home/app
+      - nodemodules:/home/app/node_modules
+    depends_on:
+      - database
+
+  backend:
+    image: bicy-ruby-image
+    build:
+      context: ./backend
+      dockerfile: ../provision/backend/Dockerfile
+    ports:
+      - "3001:3001"
+    stdin_open: true
+    tty: true
+    env_file:
+      - .env
+    networks:
+      - main
+    depends_on:
+      - database
+
+  database:
+    image: postgres:13.3
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=bicyrent_development
+    volumes:
+      - database:/var/lib/postgresql/data
+    networks:
+      - main
+    env_file:
+      - .env
+
+volumes:
+  database:
+  nodemodules:
+
+networks:
+  main:
