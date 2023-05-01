@@ -27,12 +27,39 @@ An application (practice) with Ruby on Rails, PostgreSQL, Google oAuth, and Next
   BICYRENT_GOOGLE_OAUTH_CLIENT_ID=""
 
   NEXT_PUBLIC_API_URL_SERVER="http://localhost:3001"
+
+  PGPORT=""
+  DB_USER=""
+  DB_PASSWORD=""
+  DB_HOST=""
 ```
 
 
 ## 📚 Folder Structure
 
 - `bicyrent-app/`: Source code base. Frontend made with **NextJS**
+- `backend`: API REST file made with Ruby on Rails
 - `request/`: Examples to test the API and EndPoints
+- `provision/`: The files to provision the Docker containers
 - `assets/`: Contains resources, diagrams
-- `bacnkend`: API REST file made with Ruby on Rails
+
+## 🐳 Running the app inside containers
+
+To run the application with containers you will need:
+
+- Docker. [👉 Install Docker](https://docs.docker.com/get-docker/)
+- Docker Compose. [👉 Install Docker Compose](https://docs.docker.com/compose/install/)
+- Make. [👉 Install Make](https://www.gnu.org/software/make/)
+
+then run the following command int the root `/` to initialize the application:
+
+```bash
+  make init
+```
+
+and to start the application:
+
+```bash
+  make start
+```
+go to `http://localhost:3000` to see the application running
