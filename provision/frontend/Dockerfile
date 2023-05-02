@@ -11,5 +11,7 @@ ENV APP_HOME /home/app
 RUN apt-get update && apt-get install -y tini
 COPY --from=compile-image /usr/src/node_modules $APP_HOME/node_modules
 COPY . $APP_HOME
+EXPOSE 3000
+CMD [ "yarn", "dev" ]
 
 WORKDIR $APP_HOME

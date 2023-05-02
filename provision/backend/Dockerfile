@@ -1,5 +1,3 @@
-ARG STAGE
-
 FROM ruby:2.7.6-alpine AS runtime-image
 
 ENV APP_HOME /app

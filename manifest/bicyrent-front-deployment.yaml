@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bicyrent-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bicyrent-front
+  template:
+    metadata:
+      labels:
+        app: bicyrent-front
+    spec:
+      containers:
+      - name: bicyrent-front
+        image: miltoncodeyt/bicy-nextjs:0.0.1
+        env:
+          - name: NEXT_PUBLIC_API_URL_SERVER
+            valueFrom:
+              secretKeyRef:
+                name: next-public
+                key: api-url-server
+          - name: BICYRENT_GOOGLE_OAUTH_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: google-oauth-credentials
+                key: client-secret
+          - name: BICYRENT_GOOGLE_OAUTH_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: google-oauth-credentials
+                key: client-id
+        ports:
+          - containerPort: 3000

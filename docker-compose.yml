@@ -2,7 +2,7 @@ version: '3'
 services:
 
   frontend:
-    image: bicy-nextjs-image
+    image: bicy-nextjs:0.0.1
     build:
       context: ./bicyrent-app
       dockerfile: ../provision/frontend/Dockerfile
@@ -22,7 +22,7 @@ services:
       - database
 
   backend:
-    image: bicy-ruby-image
+    image: bicy-ruby:0.0.1
     build:
       context: ./backend
       dockerfile: ../provision/backend/Dockerfile
@@ -55,6 +55,7 @@ services:
 volumes:
   database:
   nodemodules:
+
 
 networks:
   main:

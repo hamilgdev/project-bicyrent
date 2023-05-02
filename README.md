@@ -42,6 +42,7 @@ An application (practice) with Ruby on Rails, PostgreSQL, Google oAuth, and Next
 - `request/`: Examples to test the API and EndPoints
 - `provision/`: The files to provision the Docker containers
 - `assets/`: Contains resources, diagrams
+- `manifest/`: Contains resources of manifest to deploy the application, minikube, kubernetes, etc
 
 ## 🐳 Running the app inside containers
 

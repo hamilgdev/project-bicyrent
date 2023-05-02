@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bicyrent-back
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bicyrent-back
+  template:
+    metadata:
+      labels:
+        app: bicyrent-back
+    spec:
+      containers:
+      - name: bicyrent-back
+        image: miltoncodeyt/bicy-ruby:0.0.1
+        env:
+          - name: DATABASE_URL
+            value: "postgresql://postgres:postgres@postgres-database/bicyrent_development"
+        ports:
+        - containerPort: 3001

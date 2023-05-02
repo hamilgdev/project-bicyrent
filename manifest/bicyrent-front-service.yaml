@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bicyrent-front
+  labels:
+    app: bicyrent-front
+spec:
+  selector:
+    app: bicyrent-front
+  ports:
+  - name: http
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer
