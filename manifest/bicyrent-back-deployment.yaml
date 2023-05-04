@@ -18,5 +18,7 @@ spec:
         env:
           - name: DATABASE_URL
             value: "postgresql://postgres:postgres@postgres-database/bicyrent_development"
+          - name: RAILS_ENV
+            value: development
         ports:
         - containerPort: 3001

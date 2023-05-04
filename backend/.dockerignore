@@ -5,3 +5,12 @@ log/*
 .envrc
 .env.*
 *.dump
+.git
+.gitingore
+.gitlab-ci.yml
+.gitmodules
+.ruby-version
+.rvmrc
+.rspc
+*.md
+!README.md

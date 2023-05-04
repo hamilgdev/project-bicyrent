@@ -86,6 +86,7 @@ test:
 #
 production:
   <<: *default
-  database: bicyrent_production
-  username: bicyrentApp
-  password: <%= ENV["BICYRENTAPP_DATABASE_PASSWORD"] %>
+  database: bicyrentApp
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV.fetch("DB_PASSWORD", ENV["POSTGRES_PASSWORD"] ) %>
+  host: <%= ENV["DB_HOST"] %>

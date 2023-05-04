@@ -1,3 +1,10 @@
 node_modules
 .git
 .github
+*.md
+!README.md
+Dockerfile
+.dockerignore
+npm-debug.log
+.next
+docker

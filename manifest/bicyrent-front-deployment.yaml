@@ -31,5 +31,7 @@ spec:
               secretKeyRef:
                 name: google-oauth-credentials
                 key: client-id
+          - name: NEXTAUTH_URL
+            value: ""
         ports:
           - containerPort: 3000

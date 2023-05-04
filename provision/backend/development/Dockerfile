@@ -21,5 +21,3 @@ RUN apk update && apk add --no-cache \
 RUN bundle install
 EXPOSE 3001
 CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3001"]
-
-WORKDIR $APP_HOME
