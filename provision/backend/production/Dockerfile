@@ -18,16 +18,10 @@ RUN apk add --update --no-cache --virtual run-dependencies \
   && rm -rf /var/cache/apk/*
 
 ENV APP_HOME /app
-ENV BUNDLE_PATH /gems
-
 WORKDIR $APP_HOME
-
 COPY Gemfile Gemfile.lock $APP_HOME
 RUN bundle install
-
 COPY . $APP_HOME
-
 EXPOSE 3001
 
-ENTRYPOINT [ "/bin/sh" ]
 CMD ["rails", "s", "-b", "0.0.0.0", "-p", "3001"]

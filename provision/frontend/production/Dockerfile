@@ -35,5 +35,4 @@ USER nextjs
 EXPOSE 3000
 ENV PORT 3000
 
-ENTRYPOINT [ "/bin/sh" ]
 CMD ["node", "server.js"]

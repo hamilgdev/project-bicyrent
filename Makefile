@@ -17,23 +17,23 @@ app.start:
 
 # ----------------------------------------------
 
-build.prod:
+init_build.prod:
 	$(MAKE) app.build_prod app.create_prod_db app.load_prod_schema app.migrate_prod app.stop_prod COMPOSE_FILE=${COMPOSE_FILE}
 
 app.build_prod:
-	docker-compose -f ${COMPOSE_FILE} build $(cache)
+	docker compose -f ${COMPOSE_FILE} build
 
 app.create_prod_db:
-	docker compose -f ${COMPOSE_FILE} run -e RAILS_ENV=production --rm backend db:create
+	docker compose -f ${COMPOSE_FILE} run -e RAILS_ENV=production --rm backend rake db:create
 
 app.load_prod_schema:
-	docker compose -f ${COMPOSE_FILE} run -e RAILS_ENV=production --rm backend db:schema:load --trace
+	docker compose -f ${COMPOSE_FILE} run -e RAILS_ENV=production --rm backend rake db:schema:load --trace
 
 app.migrate_prod:
-	docker compose -f ${COMPOSE_FILE} run -e RAILS_ENV=production --rm backend db:migrate
+	docker compose -f ${COMPOSE_FILE} run -e RAILS_ENV=production --rm backend rake db:migrate
 
 app.stop_prod:
 	docker compose -f ${COMPOSE_FILE} down
 
 app.start_prod:
-	docker compose -f ${COMPOSE_FILE} down && docker compose -f ${COMPOSE_FILE} up
+	docker compose -f ${COMPOSE_FILE} down && docker compose -f ${COMPOSE_FILE} up ; docker compose down
