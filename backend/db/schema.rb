@@ -10,30 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_416_192_358) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_16_192358) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'bicycles', primary_key: 'uid', id: :string, force: :cascade do |t|
-    t.string 'user_id'
-    t.string 'color'
-    t.string 'model'
-    t.string 'latitude'
-    t.string 'length'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['user_id'], name: 'index_bicycles_on_user_id'
+  create_table "bicycles", primary_key: "uid", id: :string, force: :cascade do |t|
+    t.string "user_id"
+    t.string "color"
+    t.string "model"
+    t.string "latitude"
+    t.string "length"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bicycles_on_user_id"
   end
 
-  create_table 'users', primary_key: 'uid', id: :string, force: :cascade do |t|
-    t.string 'full_name'
-    t.string 'email'
-    t.string 'avatar_url'
-    t.string 'provider'
-    t.string 'auth_token'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "users", primary_key: "uid", id: :string, force: :cascade do |t|
+    t.string "full_name"
+    t.string "email"
+    t.string "avatar_url"
+    t.string "provider"
+    t.string "auth_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_foreign_key 'bicycles', 'users', primary_key: 'uid'
+  add_foreign_key "bicycles", "users", primary_key: "uid"
 end

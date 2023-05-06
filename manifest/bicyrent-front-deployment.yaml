@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: bicyrent-front
-        image: miltoncodeyt/bicy-nextjs:0.0.1
+        # image: bicyrentacr.azurecr.io/bicy-nextjs-prod:v1
+        image: miltoncodeyt/bicy-nextjs-prod:0.0.1
         env:
           - name: NEXT_PUBLIC_API_URL_SERVER
             valueFrom:
@@ -31,7 +32,15 @@ spec:
               secretKeyRef:
                 name: google-oauth-credentials
                 key: client-id
+          - name: NEXTAUTH_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: next-auth
+                key: next-auth-secret
           - name: NEXTAUTH_URL
-            value: ""
+            valueFrom:
+              secretKeyRef:
+                name: next-auth
+                key: next-auth-url
         ports:
           - containerPort: 3000

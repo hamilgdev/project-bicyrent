@@ -14,11 +14,12 @@ spec:
     spec:
       containers:
       - name: bicyrent-back
-        image: miltoncodeyt/bicy-ruby:0.0.1
+        # image: bicyrentacr.azurecr.io/bicy-ruby-prod:v1
+        image: miltoncodeyt/bicy-ruby-prod:0.0.1
         env:
           - name: DATABASE_URL
-            value: "postgresql://postgres:postgres@postgres-database/bicyrent_development"
+            value: "postgresql://postgres:postgres@postgres-database/bicyrentApp"
           - name: RAILS_ENV
-            value: development
+            value: production
         ports:
         - containerPort: 3001

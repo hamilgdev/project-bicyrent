@@ -2,29 +2,33 @@ version: '3'
 services:
 
   frontend:
-    image: bicy-nextjs-prod:0.0.1
+    image: bicy-nextjs:0.0.1
     build:
       context: ./bicyrent-app
-      dockerfile: ../provision/frontend/production/Dockerfile
-    environment:
-      - NODE_ENV=production
-      - NEXT_PUBLIC_API_URL_SERVER=http://localhost:3001
+      dockerfile: ../provision/frontend/development/Dockerfile
     ports:
       - "3000:3000"
+    command: /usr/bin/tini -- yarn dev
+    environment:
+      - NEXT_PUBLIC_API_URL_SERVER=http://localhost:3001
+      - NEXTAUTH_URL=http://localhost:3000
     stdin_open: true
     tty: true
     networks:
       - main
+    env_file:
+      - .env
+    volumes:
+      - ./bicyrent-app:/home/app
+      - nodemodules:/home/app/node_modules
     depends_on:
       - database
 
   backend:
-    image: bicy-ruby-prod:0.0.1
+    image: bicy-ruby:0.0.1
     build:
       context: ./backend
-      dockerfile: ../provision/backend/production/Dockerfile
-    environment:
-      - RAILS_ENV=production
+      dockerfile: ../provision/backend/development/Dockerfile
     ports:
       - "3001:3001"
     stdin_open: true
@@ -45,7 +49,7 @@ services:
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=bicyrentApp
+      - POSTGRES_DB=bicyrent_development
     volumes:
       - database:/var/lib/postgresql/data
     networks:
@@ -55,6 +59,7 @@ services:
 
 volumes:
   database:
+  nodemodules:
 
 
 networks:

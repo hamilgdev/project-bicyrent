@@ -27,7 +27,7 @@ spec:
               name: db-credentials
               key: password
         - name: POSTGRES_DB
-          value: bicyrent_development
+          value: bicyrentApp
         ports:
         - containerPort: 5432
         volumeMounts:
